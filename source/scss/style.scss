@@ -1,0 +1,536 @@
+//<МИКСИНЫ>=================================================================================
+@mixin anim($time, $delay) {
+  -webkit-transition: all $time ease $delay;
+  -moz-transition: all $time ease $delay;
+  -ms-transition: all $time ease $delay;
+  -o-transition: all $time ease $delay;
+  transition: all $time ease $delay;
+}
+@mixin anim_cubic($time, $delay) {
+  -webkit-transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+  -moz-transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+  -ms-transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+  -o-transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+  transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+}
+@mixin rotate($deg) {
+  -moz-transform: rotate($deg);
+  -ms-transform: rotate($deg);
+  -webkit-transform: rotate($deg);
+  -o-transform: rotate($deg);
+  transform: rotate($deg);
+}
+@mixin scale($num) {
+  -moz-transform: scale($num);
+  -ms-transform: scale($num);
+  -webkit-transform: scale($num);
+  -o-transform: scale($num);
+  transform: scale($num);
+}
+@mixin skew($num) {
+  -moz-transform: scewX($num);
+  -ms-transform: scewX($num);
+  -webkit-transform: scewX($num);
+  -o-transform: scewX($num);
+  transform: scewX($num);
+}
+@mixin cnt($h) {
+  display: flex;
+  flex-direction: column;
+  height: $h;
+  text-align: center;
+  align-items: stretch;
+  justify-content: center;
+}
+@mixin tr($x, $y, $z) {
+  transform: translate3d($x, $y, $z);
+}
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 0;
+}
+@mixin flexboxinline() {
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flex;
+  display: -o-inline-flex;
+  display: inline-flex;
+}
+@mixin flexorder($val) {
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
+  order: $val;
+}
+//</МИКСИНЫ>=================================================================================
+//Шрифт по умолчанию=================================================================================
+$fontfamily: 'Lato';
+//<Подключение шрифтов>=================================================================================
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
+//</Подключение шрифтов>=================================================================================
+//<ПЕРЕМЕННЫЕ>=================================================================================
+$minwidth: 320px;
+$mw: 1100;
+$md1: $mw + 12;
+$md2: 992.98;
+$md3: 767.98;
+$md4: 479.98;
+//</ПЕРЕМЕННЫЕ>=================================================================================
+//<Обнуление. Общие параметры>===========================================================================================
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+html,
+body {
+  height: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+/*--------------------*/
+body {
+  font-size: 14px;
+  font-family: $fontfamily;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}
+//</Обнуление. Общие параметры>===================================================================================
+//<ОБОЛОЧКА>======================================================================================================
+.wrapper {
+  min-height: 100vh;
+  overflow: hidden;
+  @include flexbox();
+  flex-direction: column;
+}
+.ibg {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  .ibg img {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+//</ОБОЛОЧКА>======================================================================================================
+//<Основная СЕТКА>======================================================================================================
+.container {
+  max-width: 1130px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+//</Основная СЕТКА>======================================================================================================
+//<Подключение ФАЙЛОВ, СТИЛЕЙ, СТРАНИЦ И ЭЛЕМЕНТОВ>======================================================================================================
+@import '_header';
+@import '_footer';
+@import '_form';
+//</Подключение ФАЙЛОВ, СТИЛЕЙ, СТРАНИЦ И ЭЛЕМЕНТОВ>======================================================================================================
+//<Основной блок>======================================================================================================
+.new-generation {
+  top: 100%;
+  width: 100%;
+  padding-top: 117px;
+  background-color: #f7f7f7;
+  padding-bottom: 135px;
+}
+.block {
+  @include flexbox();
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .new-generation__icon {
+    &.block-1_i {
+      padding-top: 70px;
+    }
+  }
+  .new-generation__title {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 3.6px;
+    color: #353738;
+    line-height: 1.5;
+    padding-top: 35px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .new-generation__text {
+    padding-top: 35px;
+    font-size: 18px;
+    line-height: 1.89;
+    text-align: center;
+    color: #848789;
+    max-width: 1079px;
+    &.block-1_j {
+      text-align: justify;
+      padding-top: 26px;
+      line-height: 30px;
+      letter-spacing: -0.035em;
+      font-size: 16px;
+      padding: 26px 68px 0 65px;
+      &:after {
+        content: '';
+        display: block;
+        margin: 35px auto 0 auto;
+        width: 50px;
+        height: 1px;
+        background-color: #ebebeb;
+      }
+    }
+    @media (max-width: 1500px) {
+      &.block-1_j {
+        padding: 26px 35px 0 30px;
+      }
+    }
+  }
+}
+
+//=================================================================================================================================
+.block-1 {
+  @include flexbox();
+  &__column-1 {
+    flex: 0 1 66.666%;
+    position: relative;
+  }
+  &__bicycle {
+    height: 100%;
+    position: relative;
+  }
+
+  &__logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    @include flexbox();
+    @include anim(0.3s, 0s);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    &:hover {
+      opacity: 100%;
+      background-color: rgba(100, 194, 158, 0.5);
+    }
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+  &__image img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+  }
+  //   * НЕ РАБОТАЕТ МЕДИАЗАПРОС *
+  @media (max-width: 1100px) {
+    .block-1 {
+      flex-direction: column;
+    }
+  }
+}
+.block-1 {
+  &__column-2 {
+    flex: 0 1 33.333%;
+    //  &:after {
+    //    // content: '';
+    //    // position: absolute;
+    //    // bottom: -913px;
+    //    // left: 84%;
+    //    // margin-left: -20px;
+    //    // width: 0;
+    //    // height: 0;
+    //    // border-left: 10px solid transparent;
+    //    // border-right: 10px solid transparent;
+    //    // border-top: 10px solid rgb(255, 255, 255);
+    //  }
+  }
+  &__column-2-image {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    padding: 0 0 39.5% 0;
+  }
+  &__column-2-image img {
+    padding-top: 54px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+  }
+}
+.block-1_rev {
+  flex-direction: row-reverse;
+}
+//===========================================================================================================================================================
+.block-1__column-1_block-last {
+  flex: 0 1 33.333%;
+}
+.block-1__column-2_block-last {
+  flex: 0 1 33.333%;
+}
+.block-1__column-3_block-last {
+  flex: 0 1 33.333%;
+}
+//============================================================================================================================================================
+.slider {
+  text-align: center;
+  background-color: #f7f7f7;
+  padding: 124px 0 60px 0;
+  //   &__body {
+  //   }
+
+  //   &__item {
+  //   }
+
+  //   &__icon {
+  //   }
+
+  &__title {
+    font-weight: 700;
+    font-size: 18px;
+    color: #353738;
+    margin-top: 20px;
+    span {
+      font-weight: 300;
+      color: #848789;
+    }
+  }
+
+  &__text {
+    margin-top: 27px;
+    font-size: 24px;
+    font-style: italic;
+    line-height: 1.42;
+    color: #848789;
+    margin-bottom: 183px;
+  }
+}
+//============================================================================================================================================================
+.discover {
+  &__body {
+    @include flexbox();
+  }
+}
+.discovery {
+  &__column {
+    flex: 0 1 16.666%;
+    &_b {
+      flex: 0 1 33.333%;
+    }
+  }
+
+  &__block {
+  }
+}
+.block-discovery {
+  height: 100%;
+  &__row {
+    @include flexbox();
+  }
+
+  &__column {
+    flex: 0 1 50%;
+  }
+}
+.block-1__bicycle.discovery__column_b {
+  padding: 0 0 200.5% 0;
+  background: url(../../img/block-shop/4.png) no-repeat;
+  height: 100%;
+}
+//============================================================================================================================================================
+.discover {
+  &__footer {
+    text-align: center;
+  }
+
+  &__bg {
+    background-color: #282f35;
+    padding: 96px 0;
+  }
+
+  &__btn {
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2.8px;
+    color: #ffffff;
+    text-transform: uppercase;
+    border: solid 1px rgba(255, 255, 255, 0.5);
+    padding: 20px 56px;
+  }
+  &__text:hover {
+    @include anim(0.5s, 0.1s);
+    color: #282f35;
+    border: solid 1px rgba(255, 255, 255, 0.5);
+    background-color: #ffffff;
+  }
+}
+//============================================================================================================================================================
+.form {
+  text-align: center;
+  padding-top: 109px;
+  &__title {
+    font-size: 24px;
+    font-style: italic;
+    line-height: 1.42;
+    color: #848789;
+    padding-top: 39px;
+  }
+
+  &__row {
+    padding-top: 35px;
+    padding-bottom: 111px;
+  }
+
+  &__type {
+    border: solid 1px #d3d7d9;
+    background-color: #ffffff;
+    width: 400px;
+    padding: 28px 228px 24px 28px;
+    font-size: 20px;
+  }
+  input::placeholder {
+    font-style: italic;
+    color: #929292;
+    line-height: 1.2;
+  }
+  &__btn {
+    padding: 24.8px 45px;
+    background-color: #64c29e;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 300;
+    margin-left: 8px;
+  }
+}
+// .container{}
+//============================================================================================================================================================
+.contacts {
+  background-color: #f7f7f7;
+  &__row {
+    padding-top: 100px;
+    @include flexbox();
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 100px;
+  }
+
+  &__info {
+    @include flexbox();
+    flex-direction: column;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.29;
+    text-align: left;
+    color: #848789;
+  }
+  &__info:first-child {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  &__social {
+    img {
+      padding-right: 15px;
+    }
+  }
+
+  &__author {
+    @include flexbox();
+    align-items: center;
+    &_t {
+      margin-right: 9px;
+      font-size: 14px;
+      font-style: italic;
+      line-height: 1.29;
+      color: #848789;
+    }
+  }
+}
+
+//</Основной блок>============================================================================================================================================
+//<Подключение ФАЙЛОВ UI, СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>=====================================================================================================
+//</Подключение ФАЙЛОВ UI, СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
